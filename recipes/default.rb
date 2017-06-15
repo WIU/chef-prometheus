@@ -50,19 +50,18 @@ include_recipe "prometheus::#{node['prometheus']['install_method']}"
 
 # -- Write our Config -- #
 
-unless node['prometheus']['allow_external_config'] do
-  template node['prometheus']['flags']['config.file'] do
-    action    :nothing
-    cookbook  node['prometheus']['job_config_cookbook_name']
-    source    node['prometheus']['job_config_template_name']
-    mode      '0644'
-    owner     node['prometheus']['user']
-    group     node['prometheus']['group']
-    variables(
-      rule_filenames: node['prometheus']['rule_filenames']
-    )
-    notifies  :restart, 'service[prometheus]'
-  end
+template node['prometheus']['flags']['config.file'] do
+  action    :nothing
+  cookbook  node['prometheus']['job_config_cookbook_name']
+  source    node['prometheus']['job_config_template_name']
+  mode      '0644'
+  owner     node['prometheus']['user']
+  group     node['prometheus']['group']
+  variables(
+    rule_filenames: node['prometheus']['rule_filenames']
+  )
+  notifies  :restart, 'service[prometheus]'
+  not_if { node['prometheus']['allow_external_config'] == true }
 end
 
 # monitor our server instance
