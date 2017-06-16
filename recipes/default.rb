@@ -61,6 +61,7 @@ template node['prometheus']['flags']['config.file'] do
     rule_filenames: node['prometheus']['rule_filenames']
   )
   notifies  :restart, 'service[prometheus]'
+  not_if { node['prometheus']['allow_external_config'] == true }
 end
 
 # monitor our server instance
