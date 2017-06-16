@@ -5,8 +5,8 @@ After=network.target
 [Service]
 ExecStart=<%= node['prometheus']['alertmanager']['binary'] %> \
     -log.level=debug \
-    -storage.path="<%= node['prometheus']['dir'] %>/data" \
-    -config.file=/opt/prometheus/alertmanager.conf \
+    -storage.path=<%= node['prometheus']['alertmanager']['storage.path'] %> \
+    -config.file=<%= node['prometheus']['alertmanager']['config.path'] %> \
     -web.external-url=http://127.0.0.1/alert-manager/
 User=prometheus
 
