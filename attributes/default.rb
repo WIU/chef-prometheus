@@ -244,6 +244,9 @@ default['prometheus']['alertmanager']['storage.path']                           
 # Alertmanager configuration external URL
 default['prometheus']['alertmanager']['external-url']                                     = 'http://127.0.0.1:9093/alert-manager'
 
+# Alertmanager configuration http_proxy for outgoing receivers (Pagerduty, Slack, Pushover, etc...)
+default['prometheus']['alertmanager']['http_proxy']                                       = ''
+
 # Alertmanager configuration chef template name.
 default['prometheus']['alertmanager']['config_cookbook_name']                             = 'prometheus'
 

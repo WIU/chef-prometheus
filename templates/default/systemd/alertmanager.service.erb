@@ -3,6 +3,10 @@ Description=Prometheus Alert Manager
 After=network.target
 
 [Service]
+<% unless node['prometheus']['alertmanager']['http_proxy'].empty? %>
+Environment=HTTP_PROXY=<%= node['prometheus']['alertmanager']['http_proxy'] %>
+Environment=HTTPS_PROXY=<%= node['prometheus']['alertmanager']['http_proxy'] %>
+<% end %>
 ExecStart=<%= node['prometheus']['alertmanager']['binary'] %> \
     -log.level=debug \
     -storage.path=<%= node['prometheus']['alertmanager']['storage.path'] %> \
