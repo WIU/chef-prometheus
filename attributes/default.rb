@@ -241,6 +241,9 @@ default['prometheus']['alertmanager']['config.file']                            
 # Alertmanager configuration storage directory
 default['prometheus']['alertmanager']['storage.path']                                     = "#{node['prometheus']['dir']}/data"
 
+# Alertmanager configuration external URL
+default['prometheus']['alertmanager']['external-url']                                     = 'http://127.0.0.1:9093/alert-manager'
+
 # Alertmanager configuration chef template name.
 default['prometheus']['alertmanager']['config_cookbook_name']                             = 'prometheus'
 
