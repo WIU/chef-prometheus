@@ -138,6 +138,7 @@ default['prometheus']['flags']['storage.local.index-cache-size.label-name-to-lab
 # The size in bytes for the label pair to fingerprints index cache.
 default['prometheus']['flags']['storage.local.index-cache-size.label-pair-to-fingerprints']  = 20971520
 
+## DEPRECATED
 # How many chunks to keep in memory. While the size of a chunk is 1kiB, the total
 # memory usage will be significantly higher than this value * 1kiB. Furthermore,
 # for various reasons, more chunks might have to be kept in memory temporarily.
@@ -161,19 +162,20 @@ default['prometheus']['flags']['storage.local.retention']                       
 default['prometheus']['flags']['storage.local.series-sync-strategy']                      = 'adaptive'
 
 # The URL of the remote InfluxDB server to send samples to. None, if empty.
-default['prometheus']['flags']['storage.remote.influxdb-url']                             = ''
+# default['prometheus']['flags']['storage.remote.influxdb-url']                             = ''
 
 # The name of the database to use for storing samples in InfluxDB.
-default['prometheus']['flags']['storage.remote.influxdb.database']                        = 'prometheus'
+# default['prometheus']['flags']['storage.remote.influxdb.database']                        = 'prometheus'
 
 # The InfluxDB retention policy to use.
-default['prometheus']['flags']['storage.remote.influxdb.retention-policy']                = 'default'
+# default['prometheus']['flags']['storage.remote.influxdb.retention-policy']                = 'default'
 
 # The URL of the OpenTSDB instance to send samples to. None, if empty.
 default['prometheus']['flags']['storage.remote.opentsdb-url']                             = ''
 
+# DEPRECATED
 # The timeout to use when sending samples to the remote storage.
-default['prometheus']['flags']['storage.remote.timeout']                                  = '30s'
+# default['prometheus']['flags']['storage.remote.timeout']                                  = '30s'
 
 # Path to the console library directory.
 default['prometheus']['flags']['web.console.libraries']                                   = 'console_libraries'
