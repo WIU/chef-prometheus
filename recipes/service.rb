@@ -45,18 +45,25 @@ when 'systemd'
     source 'systemd/prometheus.service.erb'
     mode '0644'
     variables(:sysconfig_file => "/etc/#{conf_dir}/#{env_file}")
+    notifies :reload, 'systemd_unit[prometheus.service]', :immediately
     notifies :restart, 'service[prometheus]', :delayed
   end
 
   template "/etc/#{conf_dir}/#{env_file}" do
     source "#{dist_dir}/#{conf_dir}/prometheus.erb"
     mode '0644'
+    notifies :reload, 'systemd_unit[prometheus.service]', :immediately
     notifies :restart, 'service[prometheus]', :delayed
   end
 
   service 'prometheus' do
     supports :status => true, :restart => true
     action [:enable, :start]
+  end
+
+  systemd_unit 'prometheus.service' do
+    supports :reload => true
+    action :nothing
   end
   # rubocop:enable Style/HashSyntax
 when 'upstart'
