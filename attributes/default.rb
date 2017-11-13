@@ -145,7 +145,7 @@ default['prometheus']['flags']['storage.local.index-cache-size.label-pair-to-fin
 # default['prometheus']['flags']['storage.local.memory-chunks']                             = 1048576
 
 # Set heap size to approximately 2/3 of total available memory (in bytes)
-default['prometheus']['flags']['storage.local.target-heap-size']                          = (node.memory.total.to_i * 1000 * 0.6).floor
+default['prometheus']['flags']['storage.local.target-heap-size']                          = (node['memory']['total'].to_i * 1000 * 0.6).floor
 
 # Base path for metrics storage.
 default['prometheus']['flags']['storage.local.path']                                      = '/var/lib/prometheus'

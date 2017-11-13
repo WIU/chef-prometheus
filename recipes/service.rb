@@ -62,7 +62,6 @@ when 'systemd'
   end
 
   systemd_unit 'prometheus.service' do
-    supports :reload => true
     action :nothing
   end
   # rubocop:enable Style/HashSyntax
