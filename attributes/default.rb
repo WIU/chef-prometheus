@@ -204,7 +204,6 @@ default['prometheus']['v2_cli_opts']['web.console.templates'] = 'consoles'
 
 # Enable remote service shutdown.
 default['prometheus']['flags']['web.enable-remote-shutdown'] = false
-default['prometheus']['v2_cli_opts']['web.enable-remote-shutdown'] = false
 
 # The URL under which Prometheus is externally reachable (for
 # example, if Prometheus is served via a reverse proxy). Used for
@@ -219,7 +218,6 @@ default['prometheus']['v2_cli_opts']['web.listen-address'] = ':9090'
 
 # Path under which to expose metrics.
 default['prometheus']['flags']['web.telemetry-path'] = '/metrics'
-default['prometheus']['v2_cli_opts']['web.telemetry-path'] = '/metrics'
 
 # Read assets/templates from file instead of binary.
 # web.use-local-assets flag got removed in 0.17
