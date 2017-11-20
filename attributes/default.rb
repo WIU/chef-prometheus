@@ -33,7 +33,7 @@ when 'rhel', 'fedora'
     default['prometheus']['init_style']                                                   = 'init'
   end
 else
-  default['prometheus']['init_style']                                                     = 'init'
+  default['prometheus']['init_style'] = 'init'
 end
 # rubocop:enable Style/ConditionalAssignment
 
@@ -88,8 +88,8 @@ default['prometheus']['job_config_cookbook_name']                               
 # Prometheus configuration file name.
 
 default['prometheus']['v2_cli_flags']                                                     = [
-                                                                                               'web.enable-lifecycle'
-                                                                                            ]
+  'web.enable-lifecycle',
+]
 
 default['prometheus']['flags']['config.file']                                             = "#{node['prometheus']['dir']}/prometheus.yml"
 default['prometheus']['v2_cli_opts']['config.file']                                       = "#{node['prometheus']['dir']}/prometheus.yml"
@@ -196,30 +196,36 @@ default['prometheus']['flags']['storage.remote.opentsdb-url']                   
 
 # Path to the console library directory.
 default['prometheus']['flags']['web.console.libraries']                                   = 'console_libraries'
+default['prometheus']['v2_cli_opts']['web.console.libraries'] = 'console_libraries'
 
 # Path to the console template directory, available at /console.
-default['prometheus']['flags']['web.console.templates']                                   = 'consoles'
+default['prometheus']['flags']['web.console.templates'] = 'consoles'
+default['prometheus']['v2_cli_opts']['web.console.templates'] = 'consoles'
 
 # Enable remote service shutdown.
-default['prometheus']['flags']['web.enable-remote-shutdown']                              = false
+default['prometheus']['flags']['web.enable-remote-shutdown'] = false
+default['prometheus']['v2_cli_opts']['web.enable-remote-shutdown'] = false
 
 # The URL under which Prometheus is externally reachable (for
 # example, if Prometheus is served via a reverse proxy). Used for
 # generating relative and absolute links back to Prometheus itself. If
 # omitted, relevant URL components will be derived automatically.
-default['prometheus']['flags']['web.external-url']                                        = ''
+default['prometheus']['flags']['web.external-url'] = ''
+default['prometheus']['v2_cli_opts']['web.external-url'] = ''
 
 # Address to listen on for the web interface, API, and telemetry.
-default['prometheus']['flags']['web.listen-address']                                      = ':9090'
+default['prometheus']['flags']['web.listen-address'] = ':9090'
+default['prometheus']['v2_cli_opts']['web.listen-address'] = ':9090'
 
 # Path under which to expose metrics.
-default['prometheus']['flags']['web.telemetry-path']                                      = '/metrics'
+default['prometheus']['flags']['web.telemetry-path'] = '/metrics'
+default['prometheus']['v2_cli_opts']['web.telemetry-path'] = '/metrics'
 
 # Read assets/templates from file instead of binary.
 # web.use-local-assets flag got removed in 0.17
 # https://github.com/prometheus/prometheus/commit/a542cc86096e1bad694e04d307301a807583dfc6
 if Gem::Version.new(node['prometheus']['version']) <= Gem::Version.new('0.16.2')
-  default['prometheus']['flags']['web.use-local-assets']                                  = false
+  default['prometheus']['flags']['web.use-local-assets'] = false
 end
 
 # Path to static asset directory, available at /user.
